@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const data = require("./data");
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // GET all or filtered
-app.get("/api/celestial", (req, res) => {
-  const { category, search } = req.query;
+app.get("/", (req, res) => {
+  res.redirect("/api/celestial");
 
   let results = data;
 
@@ -44,5 +44,5 @@ app.get("/api/celestial/:id", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
